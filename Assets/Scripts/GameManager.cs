@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private Spawner spawner;
+
+    void Awake() {
+        spawner = GameObject.Find("Spawner").GetComponent<Spawner>();
     }
 
-    // Update is called once per frame
+    void Start() {
+        spawner.active = false;
+    }
+
     void Update()
     {
-        
+        if (Input.anyKeyDown) {
+            spawner.active = true;
+        }
     }
 }
