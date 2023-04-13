@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private Spawner spawner;
+    public GameObject title;
 
     void Awake() {
         spawner = GameObject.Find("Spawner").GetComponent<Spawner>();
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.anyKeyDown) {
             spawner.active = true;
+            title.SetActive(false);
         }
     }
 }
