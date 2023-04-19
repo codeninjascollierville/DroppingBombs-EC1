@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +12,8 @@ public class Spawner : MonoBehaviour
     private Vector2 screenBounds;
     private float objectWidth;
     private float objectHeight;
-    
+
+    // Start is called before the first frame update
     void Start()
     {
         ResetDelay();
@@ -23,9 +24,11 @@ public class Spawner : MonoBehaviour
         objectHeight = bombPrefab.GetComponent<MeshRenderer>().bounds.size.y / 2;
     }
 
-    IEnumerator EnemyGenerator() {
+    IEnumerator EnemyGenerator()
+    {
         yield return new WaitForSeconds(delay);
-        if (active) {
+        if (active)
+        {
             float randomX = Random.Range(screenBounds.x - objectWidth, screenBounds.x * -1 + objectWidth);
             float spawnY = (screenBounds.y + objectHeight) + 5;
 
@@ -35,8 +38,9 @@ public class Spawner : MonoBehaviour
 
         StartCoroutine(EnemyGenerator());
     }
-    
-    void ResetDelay() {
+
+    void ResetDelay()
+    {
         delay = Random.Range(delayRange.x, delayRange.y);
     }
 }
